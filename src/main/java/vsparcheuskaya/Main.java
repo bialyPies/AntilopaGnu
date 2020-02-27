@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -45,7 +46,7 @@ public class Main {
 
         //manager.findOrderByDetail(detail2);
 
-        /*try {
+        try {
             manager.serialize(Manager.getOrders());
         } catch (IOException e) {
             logger.error(e.getMessage());
@@ -55,16 +56,17 @@ public class Main {
             ArrayList<Order> ords = manager.deserialize();
         } catch (IOException | ClassNotFoundException e) {
             logger.error(e.getMessage());
-        }*/
+        }
 
         ObjectMapper mapper = new ObjectMapper();
         try {
-            String jsonorder = mapper.writeValueAsString(order);
+            String jsonorder = mapper.writeValueAsString(Manager.getOrders());
+            //String jsonorder = mapper.writeValueAsString(order);
             System.out.println("json order " + jsonorder);
-            mapper.writeValue(new File(baseFile), order);
+            mapper.writeValue(new File(baseFile), Manager.getOrders());
 
-            Order newOrder = mapper.readValue(jsonorder, Order.class);
-            System.out.println(newOrder);
+            //Order newOrder = mapper.readValue(jsonorder, Order.class);
+            //System.out.println(newOrder);
         } catch (IOException e) {
             logger.error(e.getMessage());
         }
