@@ -1,14 +1,17 @@
 package vsparcheuskaya.entities;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import vsparcheuskaya.enums.DetailState;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.Year;
-import java.util.Date;
 import java.util.List;
 
-
+@Data
+@NoArgsConstructor
 public class Detail implements Serializable {
     private int id;
     private String name;
@@ -31,7 +34,7 @@ public class Detail implements Serializable {
         this.price = price;
     }
 
-    public void addPhoto(String name, byte[] img, Date date, String note){  //add parameter for photo data
+    public void addPhoto(String name, byte[] img, LocalDate date, String note){  //add parameter for photo data
         photos.add(new Photo(name, img, date, note));
     }
     public void deletePhoto(){

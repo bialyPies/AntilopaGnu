@@ -121,14 +121,14 @@ public class Manager {
     }
 
     public void serialize(ArrayList<Order> list) throws IOException {
-        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("orders.txt"));
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("files/orders.txt"));
         out.writeObject(list);
         out.close();
         logger.info("I have written:");
         logger.info(list.toString());
     }
     public ArrayList<Order> deserialize() throws IOException, ClassNotFoundException {
-        ObjectInputStream in =  new ObjectInputStream (new FileInputStream("orders.txt"));
+        ObjectInputStream in =  new ObjectInputStream (new FileInputStream("files/orders.txt"));
         ArrayList<Order> ords = (ArrayList<Order>)in.readObject();
         logger.info("I have read:");
         logger.info(ords.toString());
