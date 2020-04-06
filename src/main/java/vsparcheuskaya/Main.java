@@ -1,17 +1,7 @@
 package vsparcheuskaya;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import vsparcheuskaya.entities.Detail;
-import vsparcheuskaya.entities.Order;
-import vsparcheuskaya.enums.DetailState;
-
-import java.io.File;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Main {
 
@@ -19,19 +9,21 @@ public class Main {
     private final static String baseFile = "files/order.json";
 
     public static void main(String[] args) {
-        Manager manager = new Manager();
+        //Controller.main(null);
 
-        Order order;
-        Detail detail, detail2;
+//        Manager manager = new Manager();
 
-        order = manager.createOrder("order1", LocalDate.now(), LocalDate.of(2010, 2, 24));
-        manager.addDetail(order, "e1", DetailState.USED, BigDecimal.valueOf(1.1));
-        detail = manager.addDetail(order, "e2", DetailState.USED, BigDecimal.valueOf(2.2));
-        manager.addDetail(order, "e3", DetailState.USED, BigDecimal.valueOf(3.3));
-
-        manager.createOrder("order2", LocalDate.now(), LocalDate.of(2010, 2, 24));
-        order = manager.createOrder("ord", LocalDate.now(), LocalDate.of(2010, 2, 24));
-        detail2 = manager.addDetail(order, detail);
+//        Order order;
+//        Detail detail, detail2;
+//
+//        order = manager.createOrder("order1", LocalDate.now(), LocalDate.of(2010, 2, 24));
+//        manager.addDetail(order, "e1", DetailState.USED, BigDecimal.valueOf(1.1));
+//        detail = manager.addDetail(order, "e2", DetailState.USED, BigDecimal.valueOf(2.2));
+//        manager.addDetail(order, "e3", DetailState.USED, BigDecimal.valueOf(3.3));
+//
+//        manager.createOrder("order2", LocalDate.now(), LocalDate.of(2010, 2, 24));
+//        order = manager.createOrder("ord", LocalDate.now(), LocalDate.of(2010, 2, 24));
+//        detail2 = manager.addDetail(order, detail);
 
         /*System.out.println();
         manager.cancelOrder(1);
@@ -46,29 +38,29 @@ public class Main {
 
         //manager.findOrderByDetail(detail2);
 
-        try {
-            manager.serialize(Manager.getOrders());
-        } catch (IOException e) {
-            logger.error(e.getMessage());
-        }
-
-        try {
-            ArrayList<Order> ords = manager.deserialize();
-        } catch (IOException | ClassNotFoundException e) {
-            logger.error(e.getMessage());
-        }
-
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            String jsonorder = mapper.writeValueAsString(Manager.getOrders());
-            //String jsonorder = mapper.writeValueAsString(order);
-            System.out.println("json order " + jsonorder);
-            mapper.writeValue(new File(baseFile), Manager.getOrders());
-
-            //Order newOrder = mapper.readValue(jsonorder, Order.class);
-            //System.out.println(newOrder);
-        } catch (IOException e) {
-            logger.error(e.getMessage());
-        }
+//        try {
+//            manager.serialize(Manager.getOrders());
+//        } catch (IOException e) {
+//            logger.error(e.getMessage());
+//        }
+//
+//        try {
+//            ArrayList<Order> ords = manager.deserialize();
+//        } catch (IOException | ClassNotFoundException e) {
+//            logger.error(e.getMessage());
+//        }
+//
+//        ObjectMapper mapper = new ObjectMapper();
+//        try {
+//            String jsonorder = mapper.writeValueAsString(Manager.getOrders());
+//            //String jsonorder = mapper.writeValueAsString(order);
+//            System.out.println("json order " + jsonorder);
+//            mapper.writeValue(new File(baseFile), Manager.getOrders());
+//
+//            //Order newOrder = mapper.readValue(jsonorder, Order.class);
+//            //System.out.println(newOrder);
+//        } catch (IOException e) {
+//            logger.error(e.getMessage());
+//        }
     }
 }

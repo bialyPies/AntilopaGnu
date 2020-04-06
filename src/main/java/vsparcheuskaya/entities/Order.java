@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import vsparcheuskaya.enums.DetailState;
 import vsparcheuskaya.enums.OrderStatus;
 import vsparcheuskaya.util.LocalDateDeserializer;
 import vsparcheuskaya.util.LocalDateSerializer;
@@ -20,7 +21,7 @@ public class Order implements Serializable {
     private int id;
     private String name;    //
     private String customerName;
-    private OrderStatus orderStatus;
+    private OrderStatus orderStatus; //enum
     private BigDecimal totalCost;
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = LocalDateSerializer.class)
@@ -38,6 +39,7 @@ public class Order implements Serializable {
     private static int gId = 1;
     { id = gId++; } //temp
 
+
     public Order(String name, LocalDate date){
         this.name = name;
         this.date = date;
@@ -51,5 +53,10 @@ public class Order implements Serializable {
     @Override
     public String toString(){
         return id + " " + name + " " + orderStatus;
+    }
+
+    public static void main(String[] args){
+        DetailState isused = DetailState.USED;
+        System.out.println(String.valueOf(isused));
     }
 }

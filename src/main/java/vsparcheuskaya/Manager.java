@@ -16,14 +16,16 @@ import java.util.stream.Stream;
 
 public class Manager {
     private static ArrayList<Order> orders;
-    private static final Logger logger = Logger.getLogger(Manager.class);
+    public static final Logger logger = Logger.getLogger(Manager.class);
 
     public static ArrayList<Order> getOrders() {
         return orders;
     }
 
-    Manager (){
+    static {
         orders = new ArrayList<>();
+        System.out.println("nnsjnkfdl");
+        logger.info("Static constructor: order list is initialized: ");
     }
 
     public Order createOrder(String name, LocalDate date, LocalDate estimatedDate){

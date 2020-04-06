@@ -3,6 +3,7 @@ package vsparcheuskaya.entities;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import vsparcheuskaya.enums.DetailState;
+import vsparcheuskaya.enums.DetailStatus;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Detail implements Serializable {
     private int id;
+    private int orderId;
     private String name;
     private DetailState state;
     private BigDecimal price;
@@ -22,8 +24,7 @@ public class Detail implements Serializable {
     private String note;
     private List<Photo> photos;
     private List<Photo> photosReceived;
-    //smt for check out //прибыл/нет на складе
-    //smt for check out state //выдан/отказ
+    private DetailStatus status;
 
     private static int gId = 1;
     { id = gId++; } //temp
